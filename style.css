@@ -1,11 +1,24 @@
-/* General Styles */
 body {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(to right, #ffd6d6, #ffe6f0);
+  background: linear-gradient(to right, #ffe6e6, #fff5f5);
   color: #5a2d2d;
   overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-image: url('https://i.ibb.co/HKSMJj2/floating-hearts.gif');
+  background-repeat: repeat;
+  background-size: 250px;
+  opacity: 0.1;
+  z-index: -1;
 }
 
 .centered {
@@ -16,31 +29,44 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
+  animation: fadeSlideIn 1.8s ease forwards;
+}
+
+.intro-title {
+  font-size: 26px;
+  font-weight: bold;
+  color: #d10057;
+  animation: pulseGlow 2s infinite;
+}
+
+input, button {
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 16px;
+  margin: 10px 0;
+  width: 80%;
+  max-width: 300px;
+  border: 1px solid #ccc;
 }
 
 input {
-  padding: 10px;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-  margin: 10px 0;
-  font-size: 16px;
-  width: 80%;
-  max-width: 300px;
+  animation: fadeInUp 2s ease-in-out;
 }
 
 button {
-  padding: 10px 20px;
+  animation: fadeInUp 2.5s ease-in-out;
   background: #ff4d4d;
   color: white;
   border: none;
   border-radius: 25px;
-  font-size: 16px;
   cursor: pointer;
   transition: 0.3s;
+  box-shadow: 0 0 12px rgba(255, 100, 120, 0.3);
 }
 
 button:hover {
   background: #e60000;
+  box-shadow: 0 0 15px rgba(255, 0, 77, 0.7);
 }
 
 .error {
@@ -65,21 +91,38 @@ button:hover {
   margin-bottom: 20px;
 }
 
-.letter {
-  max-width: 700px;
-  margin: 0 auto;
-  background: white;
-  padding: 25px;
-  border-radius: 15px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-  animation: slideUp 1s ease-in-out;
+.letter-wrapper {
+  position: relative;
+  max-width: 600px;
+  margin: auto;
 }
 
-.typewriter-text {
+.scroll-bg {
+  width: 100%;
+  max-width: 600px;
+  display: block;
+  margin: auto;
+}
+
+.letter-content {
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  right: 10%;
   font-size: 18px;
-  white-space: pre-line;
   line-height: 1.6;
   text-align: left;
+  white-space: pre-line;
+  z-index: 2;
+}
+
+#feather {
+  width: 40px;
+  position: absolute;
+  bottom: 10%;
+  left: 10%;
+  z-index: 3;
+  transition: left 0.1s linear, top 0.1s linear;
 }
 
 .reply-button {
@@ -98,37 +141,37 @@ button:hover {
   background: #cc0000;
 }
 
-.fadeIn {
-  animation: fadeIn 1.5s ease forwards;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes slideUp {
-  from { transform: translateY(40px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
-
 @keyframes pulse {
   0% { transform: scale(1); }
   50% { transform: scale(1.05); }
   100% { transform: scale(1); }
 }
 
-/* Mobile Friendly */
+@keyframes pulseGlow {
+  0% { text-shadow: 0 0 10px rgba(255, 0, 77, 0.3); }
+  50% { text-shadow: 0 0 20px rgba(255, 0, 100, 0.7); }
+  100% { text-shadow: 0 0 10px rgba(255, 0, 77, 0.3); }
+}
+
+@keyframes fadeSlideIn {
+  0% { opacity: 0; transform: translateY(50px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
 @media (max-width: 600px) {
-  .letter {
-    padding: 20px;
-  }
-
-  .typewriter-text {
+  .letter-content {
     font-size: 16px;
+    top: 15%;
+    left: 12%;
+    right: 12%;
   }
 
-  .envelope-text {
-    font-size: 20px;
+  #feather {
+    width: 30px;
   }
 }
