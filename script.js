@@ -16,7 +16,7 @@ nahi aati ho — toh lagta hai jaise subah bhi andheri ho gayi ho...
 Bas... itna kehna tha... tum mere liye khaas ho. 💖`;
 
 function checkName() {
-  const correctName = "Priya"; // change this name
+  const correctName = "deepti"; 
   const input = document.getElementById("nameInput").value.trim();
   const error = document.getElementById("error");
 
