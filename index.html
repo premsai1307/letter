@@ -15,7 +15,7 @@
 
   <!-- Name Input Section -->
   <div id="namePrompt" class="centered">
-    <h2>Apna naam daalo ❤️</h2>
+    <h2 class="intro-title">Apna naam daalo ❤️</h2>
     <input type="text" id="nameInput" placeholder="Tumhara naam..." />
     <button onclick="checkName()">Open Letter</button>
     <p id="error" class="error"></p>
@@ -24,52 +24,14 @@
   <!-- Letter Section -->
   <div id="letterBox" class="hidden">
     <h1 class="envelope-text">You've Got a Letter 💌</h1>
-    <div class="letter">
-      <p id="typewriterText" class="typewriter-text"></p>
-      <a href="https://instagram.com/yourprofile" target="_blank" class="reply-button">Mujhe Reply Do 💬</a>
+    <div class="letter-wrapper">
+      <img src="scroll.png" alt="Scroll Background" class="scroll-bg" />
+      <div class="letter-content" id="typewriterText"></div>
+      <img src="feather.png" alt="Feather Pen" id="feather" />
     </div>
+    <a href="https://instagram.com/yourprofile" target="_blank" class="reply-button">Mujhe Reply Do 💬</a>
   </div>
 
-  <!-- JS -->
-  <script>
-    const shayari = `Wo subah-subah ki hawa bhi alag lagti hai,
-Jab tum saamne hoti ho toh zindagi kuch khaas lagti hai...
-
-Ek baat tumse kehna chahta hoon — har samay, har pal,
-aur har haalaat mein main tumhare saath rehna chahta hoon.
-
-Ek khayal hai… jo abhi adhoora hai,
-par use poora karna chahta hoon… tumhare saath.
-
-Tum mein koi kami nahi, koi doori nahi, sirf jazbaat hai,
-jo har roz tumse juda hua mehsoos hota hai.
-
-Tum aati ho subah jogging ke waqt — toh dil khil jaata hai,
-nahi aati ho — toh lagta hai jaise subah bhi andheri ho gayi ho...
-
-Bas... itna kehna tha... tum mere liye khaas ho. 💖`;
-
-    function checkName() {
-      const correctName = "deepti"; 
-      const input = document.getElementById("nameInput").value.trim();
-      const error = document.getElementById("error");
-
-      if (input.toLowerCase() === correctName.toLowerCase()) {
-        document.getElementById("namePrompt").style.display = "none";
-        document.getElementById("letterBox").classList.remove("hidden");
-        document.getElementById("letterBox").classList.add("fadeIn");
-        typeWriterEffect(shayari, 0);
-      } else {
-        error.innerText = "Naam sahi nahi hai... firse koshish karo 💌";
-      }
-    }
-
-    function typeWriterEffect(text, i) {
-      if (i < text.length) {
-        document.getElementById("typewriterText").innerHTML += text.charAt(i);
-        setTimeout(() => typeWriterEffect(text, i + 1), 40);
-      }
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
